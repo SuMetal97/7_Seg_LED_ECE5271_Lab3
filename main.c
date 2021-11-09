@@ -25,6 +25,29 @@ for this example*/
 
 #define MASK(x) (1UL << (x))
 void Initialize(void);
+int check_switches(void);
+
+
+int check_switches(void){
+	int Switch_Total = 0;
+	if(PTA->PDIR & MASK(SW_1)){
+	}else{
+		Switch_Total +=1;
+	}
+	if(PTA->PDIR & MASK(SW_2)){
+	}else{
+		Switch_Total +=2;
+	}
+	if(PTA->PDIR & MASK(SW_3)){
+	}else{
+		Switch_Total +=4;
+	}
+	if(PTA->PDIR & MASK(SW_4)){
+	}else{
+		Switch_Total +=8;
+	}
+	return Switch_Total;
+}
 
 void Initialize(void){
 	SIM_SCGC5 |= SIM_SCGC5_PORTA_MASK;
@@ -63,14 +86,110 @@ void Initialize(void){
 }
 
 int main(void){
-	int Switch_Total = 0;
-	
-	
+	int Switch_count;
 	while (1){
-		Switch_Total(Switch_Total){
-		
+		Switch_count = 0;
+		Switch_count = check_switches();
+		switch (Switch_count){
+			case 0:
+				PTA->PSOR = MASK(Seg_A);
+				PTA->PSOR = MASK(Seg_B);
+				PTA->PSOR = MASK(Seg_C);
+				PTA->PSOR = MASK(Seg_D);
+				PTA->PSOR = MASK(Seg_E);
+				PTA->PSOR = MASK(Seg_F);
+				PTA->PCOR = MASK(Seg_G);
+				break;
+			case 1:
+				PTA->PCOR = MASK(Seg_A);
+				PTA->PSOR = MASK(Seg_B);
+				PTA->PSOR = MASK(Seg_C);
+				PTA->PCOR = MASK(Seg_D);
+				PTA->PCOR = MASK(Seg_E);
+				PTA->PCOR = MASK(Seg_F);
+				PTA->PCOR = MASK(Seg_G);
+				break;
+			case 2:
+				PTA->PSOR = MASK(Seg_A);
+				PTA->PSOR = MASK(Seg_B);
+				PTA->PCOR = MASK(Seg_C);
+				PTA->PSOR = MASK(Seg_D);
+				PTA->PSOR = MASK(Seg_E);
+				PTA->PCOR = MASK(Seg_F);
+				PTA->PSOR = MASK(Seg_G);
+				break;
+			case 3:
+				PTA->PSOR = MASK(Seg_A);
+				PTA->PSOR = MASK(Seg_B);
+				PTA->PSOR = MASK(Seg_C);
+				PTA->PSOR = MASK(Seg_D);
+				PTA->PCOR = MASK(Seg_E);
+				PTA->PCOR = MASK(Seg_F);
+				PTA->PSOR = MASK(Seg_G);
+				break;
+			case 4:
+				PTA->PCOR = MASK(Seg_A);
+				PTA->PSOR = MASK(Seg_B);
+				PTA->PSOR = MASK(Seg_C);
+				PTA->PCOR = MASK(Seg_D);
+				PTA->PCOR = MASK(Seg_E);
+				PTA->PSOR = MASK(Seg_F);
+				PTA->PSOR = MASK(Seg_G);
+				break;
+			case 5:
+				PTA->PSOR = MASK(Seg_A);
+				PTA->PCOR = MASK(Seg_B);
+				PTA->PSOR = MASK(Seg_C);
+				PTA->PSOR = MASK(Seg_D);
+				PTA->PCOR = MASK(Seg_E);
+				PTA->PSOR = MASK(Seg_F);
+				PTA->PSOR = MASK(Seg_G);
+				break;
+			case 6:
+				PTA->PSOR = MASK(Seg_A);
+				PTA->PCOR = MASK(Seg_B);
+				PTA->PSOR = MASK(Seg_C);
+				PTA->PSOR = MASK(Seg_D);
+				PTA->PSOR = MASK(Seg_E);
+				PTA->PSOR = MASK(Seg_F);
+				PTA->PCOR = MASK(Seg_G);
+				break;
+			case 7:
+				PTA->PSOR = MASK(Seg_A);
+				PTA->PSOR = MASK(Seg_B);
+				PTA->PSOR = MASK(Seg_C);
+				PTA->PCOR = MASK(Seg_D);
+				PTA->PCOR = MASK(Seg_E);
+				PTA->PCOR = MASK(Seg_F);
+				PTA->PCOR = MASK(Seg_G);
+				break;
+			case 8:
+				PTA->PSOR = MASK(Seg_A);
+				PTA->PSOR = MASK(Seg_B);
+				PTA->PSOR = MASK(Seg_C);
+				PTA->PSOR = MASK(Seg_D);
+				PTA->PSOR = MASK(Seg_E);
+				PTA->PSOR = MASK(Seg_F);
+				PTA->PSOR = MASK(Seg_G);
+				break;
+			case 9:
+				PTA->PSOR = MASK(Seg_A);
+				PTA->PSOR = MASK(Seg_B);
+				PTA->PSOR = MASK(Seg_C);
+				PTA->PSOR = MASK(Seg_D);
+				PTA->PCOR = MASK(Seg_E);
+				PTA->PSOR = MASK(Seg_F);
+				PTA->PSOR = MASK(Seg_G);
+				break;
+				
 			default:
 				PTA->PCOR = MASK(Seg_A);
+				PTA->PCOR = MASK(Seg_B);
+				PTA->PCOR = MASK(Seg_C);
+				PTA->PCOR = MASK(Seg_D);
+				PTA->PCOR = MASK(Seg_E);
+				PTA->PCOR = MASK(Seg_F);
+				PTA->PSOR = MASK(Seg_G);
 		
 		}
 	
